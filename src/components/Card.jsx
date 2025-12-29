@@ -1,12 +1,12 @@
 
 import { useState } from 'react'
 
-function Card() {
+function Card({cardTitle, imageSrc}) {
 
   return (
     <div className="card">
-      <img src="" alt="" />  
-      <h2>Card Title</h2>
+      <img src={imageSrc} alt="" />  
+      <h2>{cardTitle}</h2>
     </div>
   )
 }
