@@ -10,7 +10,7 @@ function App() {
 
   //Fetch data and cache it in const
   const characterData = () => {
-    return fetch("https://pokeapi.co/api/v2/ability/?limit=20&offset=20")
+    return fetch("https://pokeapi.co/api/v2/pokemon-form")
       .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP-Error: ${response.status}`);
