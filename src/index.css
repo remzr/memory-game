@@ -50,3 +50,17 @@ main {
   aspect-ratio: 1.4;
   border: 5px solid beige;
 }
+
+#introText {
+  margin-left: 1rem;
+}
+
+#introButton {
+  margin: 1rem;
+  background-color: salmon;
+  padding: 1rem 2rem;
+  border: none;
+  color: rgb(12, 12, 12);
+  border-radius: 5px;
+  font-size: large;
+}

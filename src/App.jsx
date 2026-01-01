@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import { Activity, useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card'
+import Intro from './components/Intro';
 
 function App() {
   const [characters, setCharacters] = useState([{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"}]);
-  const [error, setError] = useState(null);
-  let cardList;  
+  const [error, setError] = useState(null);  
+  const [cardList, setCardList] = useState(null);
+  const [isShowingIntro, setIsShowingIntro] = useState(true);
 
   //Fetch data and cache it in const
   const characterData = () => {
@@ -49,27 +51,20 @@ function App() {
     shuffle(characters);
     console.log(characters);
 
+    //Hide intro element
+    setIsShowingIntro(false);
+
     //Create cards with updated order
-    cardList = characters.map(<Card cardTitle={characters[0].name} imageSrc={characters[0].image}/>);
+    setCardList(characters.map(characters => <Card cardTitle={characters.name} imageSrc={characters.image} updateGame={updateGame}/>));
   }
 
   return (
     <>
       <h1>Rick and Morty: Memory Game</h1>
-      <main>
-        <Card cardTitle={characters[0].name} imageSrc={characters[0].image} updateGame={updateGame}/>
-        <Card cardTitle={characters[1].name} imageSrc={characters[1].image} updateGame={updateGame}/>    
-        <Card cardTitle={characters[2].name} imageSrc={characters[2].image} updateGame={updateGame}/>
-        <Card cardTitle={characters[3].name} imageSrc={characters[3].image} updateGame={updateGame}/> 
-        <Card cardTitle={characters[4].name} imageSrc={characters[4].image} updateGame={updateGame}/>
-        <Card cardTitle={characters[5].name} imageSrc={characters[5].image} updateGame={updateGame}/> 
-        <Card cardTitle={characters[6].name} imageSrc={characters[6].image} updateGame={updateGame}/>
-        <Card cardTitle={characters[7].name} imageSrc={characters[7].image} updateGame={updateGame}/> 
-        <Card cardTitle={characters[8].name} imageSrc={characters[8].image} updateGame={updateGame}/>
-        <Card cardTitle={characters[9].name} imageSrc={characters[9].image} updateGame={updateGame}/>
-        <Card cardTitle={characters[10].name} imageSrc={characters[10].image} updateGame={updateGame}/>  
-        <Card cardTitle={characters[11].name} imageSrc={characters[11].image} updateGame={updateGame}/>
-      </main>
+        {isShowingIntro && (
+          <Intro updateGame={updateGame} />
+        )}
+      <main>{cardList}</main>
     </>
   )
 }
