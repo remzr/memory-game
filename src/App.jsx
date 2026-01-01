@@ -10,7 +10,7 @@ function App() {
 
   //Fetch data and cache it in const
   const characterData = () => {
-    return fetch("https://pokeapi.co/api/v2/pokemon-form")
+    return fetch("https://rickandmortyapi.com/api/character/1,12,21,24,124,455,234,324,6,99,122,600,543,211,256,743")
       .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP-Error: ${response.status}`);
@@ -30,8 +30,8 @@ function App() {
   useEffect(() => {
     characterData()
       .then((data) => {
-        console.log(data.results);
-        setCharacters(data.results);
+        console.log(data);
+        setCharacters(data);
       })
       .catch(setError);
   }, []);
