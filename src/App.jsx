@@ -3,7 +3,7 @@ import './App.css'
 import Card from './components/Card'
 
 function App() {
-  const [characters, setCharacters] = useState(null);
+  const [characters, setCharacters] = useState([{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"}]);
   const [error, setError] = useState(null);  
 
   //Fetch data and cache it in const
