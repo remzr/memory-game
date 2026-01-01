@@ -49,7 +49,8 @@ function App() {
     }
   }
 
-  function updateGame() {
+  //Update function to initially load or reload cards. Always shuffles the deck.
+  function updateCards() {
     //Shuffle character cards
     shuffle(characters);
 
@@ -57,14 +58,27 @@ function App() {
     setIsShowingIntro(false);
 
     //Create cards with updated order
-    setCardList(characters.map(characters => <Card key={characters.id} cardId={characters.id} cardTitle={characters.name} imageSrc={characters.image} updateGame={updateGame}/>));
+    setCardList(characters.map(characters => 
+      <Card key={characters.id} 
+            cardId={characters.id} 
+            cardTitle={characters.name} 
+            imageSrc={characters.image} 
+            updateCards={updateCards}
+            gameChecker={gameChecker}
+      />
+    ));
+  }
+
+  //Updates scoreboard and resets points on wrong guess
+  function gameChecker(id) {
+    console.log(id)
   }
 
   return (
     <>
       <Heading points={points} highScore={highScore}/>
       {isShowingIntro && (
-        <Intro updateGame={updateGame} />
+        <Intro updateCards={updateCards} />
       )}
       <main>{cardList}</main>
     </>
