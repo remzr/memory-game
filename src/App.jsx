@@ -9,6 +9,8 @@ function App() {
   const [error, setError] = useState(null);  
   const [cardList, setCardList] = useState(null);
   const [isShowingIntro, setIsShowingIntro] = useState(true);
+  const [points, setPoints] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   //Fetch data and cache it in const
   const characterData = () => {
@@ -61,7 +63,7 @@ function App() {
 
   return (
     <>
-      <Heading />
+      <Heading points={points} highScore={highScore}/>
       {isShowingIntro && (
         <Intro updateGame={updateGame} />
       )}
