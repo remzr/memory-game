@@ -1,6 +1,7 @@
 import { Activity, useEffect, useState } from 'react'
 import './App.css'
 import Card from './components/Card'
+import Heading from './components/Heading';
 import Intro from './components/Intro';
 
 function App() {
@@ -60,10 +61,10 @@ function App() {
 
   return (
     <>
-      <h1>Rick and Morty: Memory Game</h1>
-        {isShowingIntro && (
-          <Intro updateGame={updateGame} />
-        )}
+      <Heading />
+      {isShowingIntro && (
+        <Intro updateGame={updateGame} />
+      )}
       <main>{cardList}</main>
     </>
   )
