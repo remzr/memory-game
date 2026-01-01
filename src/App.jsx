@@ -4,7 +4,8 @@ import Card from './components/Card'
 
 function App() {
   const [characters, setCharacters] = useState([{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"}]);
-  const [error, setError] = useState(null);  
+  const [error, setError] = useState(null);
+  let cardList;  
 
   //Fetch data and cache it in const
   const characterData = () => {
@@ -35,34 +36,39 @@ function App() {
       .catch(setError);
   }, []);
 
-  //Fisher-Yates shuffle
+  //Fisher-Yates shuffle algorythm
   function shuffle(array) {
     for (let i = array.length -1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array [j]] = [array[j], array[i]];
+      [array[i], array[j]] = [array[j], array[i]];
     }
   }
 
   function updateGame() {
-    console.log(listItems);
+    //Shuffle character cards
+    shuffle(characters);
+    console.log(characters);
+
+    //Create cards with updated order
+    cardList = characters.map(<Card cardTitle={characters[0].name} imageSrc={characters[0].image}/>);
   }
 
   return (
     <>
-      <h1>Memory-Game</h1>
+      <h1>Rick and Morty: Memory Game</h1>
       <main>
-        <Card cardTitle={characters[0].name} imageSrc={characters[0].image}/>
-        <Card cardTitle={characters[1].name} imageSrc={characters[1].image}/>    
-        <Card cardTitle={characters[2].name} imageSrc={characters[2].image}/>
-        <Card cardTitle={characters[3].name} imageSrc={characters[3].image}/> 
-        <Card cardTitle={characters[4].name} imageSrc={characters[4].image}/>
-        <Card cardTitle={characters[5].name} imageSrc={characters[5].image}/> 
-        <Card cardTitle={characters[6].name} imageSrc={characters[6].image}/>
-        <Card cardTitle={characters[7].name} imageSrc={characters[7].image}/> 
-        <Card cardTitle={characters[8].name} imageSrc={characters[8].image}/>
-        <Card cardTitle={characters[9].name} imageSrc={characters[9].image}/>
-        <Card cardTitle={characters[10].name} imageSrc={characters[10].image}/>  
-        <Card cardTitle={characters[11].name} imageSrc={characters[11].image}/>
+        <Card cardTitle={characters[0].name} imageSrc={characters[0].image} updateGame={updateGame}/>
+        <Card cardTitle={characters[1].name} imageSrc={characters[1].image} updateGame={updateGame}/>    
+        <Card cardTitle={characters[2].name} imageSrc={characters[2].image} updateGame={updateGame}/>
+        <Card cardTitle={characters[3].name} imageSrc={characters[3].image} updateGame={updateGame}/> 
+        <Card cardTitle={characters[4].name} imageSrc={characters[4].image} updateGame={updateGame}/>
+        <Card cardTitle={characters[5].name} imageSrc={characters[5].image} updateGame={updateGame}/> 
+        <Card cardTitle={characters[6].name} imageSrc={characters[6].image} updateGame={updateGame}/>
+        <Card cardTitle={characters[7].name} imageSrc={characters[7].image} updateGame={updateGame}/> 
+        <Card cardTitle={characters[8].name} imageSrc={characters[8].image} updateGame={updateGame}/>
+        <Card cardTitle={characters[9].name} imageSrc={characters[9].image} updateGame={updateGame}/>
+        <Card cardTitle={characters[10].name} imageSrc={characters[10].image} updateGame={updateGame}/>  
+        <Card cardTitle={characters[11].name} imageSrc={characters[11].image} updateGame={updateGame}/>
       </main>
     </>
   )

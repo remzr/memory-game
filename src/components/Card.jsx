@@ -1,13 +1,13 @@
 
 import { useState } from 'react'
 
-function Card({cardTitle, imageSrc}) {
+function Card({cardTitle, imageSrc, updateGame}) {
 
   return (
-    <div className="card">
+    <button className="card" onClick={updateGame}>
       <img src={imageSrc} alt="" />  
       <h2>{cardTitle}</h2>
-    </div>
+    </button>
   )
 }
 
