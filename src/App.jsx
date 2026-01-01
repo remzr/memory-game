@@ -5,8 +5,8 @@ import Heading from './components/Heading';
 import Intro from './components/Intro';
 
 function App() {
-  const [characters, setCharacters] = useState([{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"},{name:"loading",imageSrc:"loading"}]);
-  const [error, setError] = useState(null);  
+  const [characters, setCharacters] = useState([{id:0,name:"loading",imageSrc:"loading"},{id:1,name:"loading",imageSrc:"loading"},{id:2,name:"loading",imageSrc:"loading"},{id:3,name:"loading",imageSrc:"loading"},{id:4,name:"loading",imageSrc:"loading"},{id:5,name:"loading",imageSrc:"loading"},{id:6,name:"loading",imageSrc:"loading"},{id:7,name:"loading",imageSrc:"loading"},{id:8,name:"loading",imageSrc:"loading"},{id:9,name:"loading",imageSrc:"loading"},{id:10,name:"loading",imageSrc:"loading"},{id:11,name:"loading",imageSrc:"loading"}]);
+  const [error, setError] = useState(null);
   const [cardList, setCardList] = useState(null);
   const [isShowingIntro, setIsShowingIntro] = useState(true);
   const [points, setPoints] = useState(0);
@@ -52,13 +52,12 @@ function App() {
   function updateGame() {
     //Shuffle character cards
     shuffle(characters);
-    console.log(characters);
 
     //Hide intro element
     setIsShowingIntro(false);
 
     //Create cards with updated order
-    setCardList(characters.map(characters => <Card cardTitle={characters.name} imageSrc={characters.image} updateGame={updateGame}/>));
+    setCardList(characters.map(characters => <Card key={characters.id} cardId={characters.id} cardTitle={characters.name} imageSrc={characters.image} updateGame={updateGame}/>));
   }
 
   return (

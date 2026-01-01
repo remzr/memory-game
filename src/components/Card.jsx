@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-function Card({cardTitle, imageSrc, updateGame}) {
+function Card({cardId, cardTitle, imageSrc, updateGame}) {
 
   return (
-    <button className="card" onClick={updateGame}>
-      <img src={imageSrc} alt="" />  
+    <button id={cardId} className="card" onClick={updateGame}>
+      <img src={imageSrc} alt={cardTitle}/>  
       <h2>{cardTitle}</h2>
     </button>
   )
