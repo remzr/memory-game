@@ -4,8 +4,6 @@ import Card from './components/Card'
 
 function App() {
   const [characters, setCharacters] = useState(null);
-  const [cardTitle, setCardTitle] = useState(null);
-  const [imageSrc, setImageSrc] = useState(null);
   const [error, setError] = useState(null);  
 
   //Fetch data and cache it in const
@@ -29,23 +27,37 @@ function App() {
   //Assigne fetched data to character hook
   useEffect(() => {
     characterData()
+      //Call fetch function to store data in characters hook
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setCharacters(data);
       })
       .catch(setError);
   }, []);
 
+  function updateGame() {
+    console.log(listItems);
+  }
+
   return (
     <>
       <h1>Memory-Game</h1>
       <main>
-        <Card cardTitle={cardTitle} imageSrc={imageSrc} />
-        <Card />
-        <Card />
-        <Card />        
-        <Card />
-        <Card />             
+        <Card cardTitle={characters[0].name} imageSrc={characters[0].image}/>
+        <Card cardTitle={characters[1].name} imageSrc={characters[1].image}/>    
+        <Card cardTitle={characters[2].name} imageSrc={characters[2].image}/>
+        <Card cardTitle={characters[3].name} imageSrc={characters[3].image}/> 
+        <Card cardTitle={characters[4].name} imageSrc={characters[4].image}/>
+        <Card cardTitle={characters[5].name} imageSrc={characters[5].image}/> 
+        <Card cardTitle={characters[6].name} imageSrc={characters[6].image}/>
+        <Card cardTitle={characters[7].name} imageSrc={characters[7].image}/> 
+        <Card cardTitle={characters[8].name} imageSrc={characters[8].image}/>
+        <Card cardTitle={characters[9].name} imageSrc={characters[10].image}/> 
+        <Card cardTitle={characters[11].name} imageSrc={characters[11].image}/>
+        <Card cardTitle={characters[12].name} imageSrc={characters[12].image}/> 
+        <Card cardTitle={characters[13].name} imageSrc={characters[13].image}/>
+        <Card cardTitle={characters[14].name} imageSrc={characters[14].image}/> 
+        <Card cardTitle={characters[15].name} imageSrc={characters[15].image}/>
       </main>
     </>
   )
