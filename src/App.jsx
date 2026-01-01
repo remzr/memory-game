@@ -9,6 +9,7 @@ function App() {
   const [error, setError] = useState(null);
   const [cardList, setCardList] = useState(null);
   const [isShowingIntro, setIsShowingIntro] = useState(true);
+  const [playerPicks, setPlayerPicks] = useState([]);
   const [points, setPoints] = useState(0);
   const [highScore, setHighScore] = useState(0);
 
@@ -71,7 +72,21 @@ function App() {
 
   //Updates scoreboard and resets points on wrong guess
   function gameChecker(id) {
-    console.log(id)
+  
+  const cardId = Number(id.cardId);
+
+    //Update list with players picks
+    setPlayerPicks(prevPicks => {
+      //Check existing picks
+      if (prevPicks.includes(cardId)) {
+        console.log("Points reset!")
+        setPoints(0);
+        return[];
+      } else {
+        setPoints(prev => prev + 1);
+        return [...prevPicks,cardId];
+      }
+    });
   }
 
   return (
